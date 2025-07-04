@@ -4,6 +4,13 @@ const env = {
   APP_DESCRIPTION: 'India\'s leading solar equipment supplier. Buy premium quality solar panels, inverters, batteries, mounting structures and complete solar solutions with government subsidy assistance.',
   
 
+  FREE_SHIPPING_THRESHOLD: 25000,
+  DEFAULT_SHIPPING_COST: 500,
+  EXPRESS_SHIPPING_COST: 1000,
+
+  // Tax Configuration
+  GST_RATE: 0.18,
+
 };
 
 // Validation function to ensure required environment variables are set

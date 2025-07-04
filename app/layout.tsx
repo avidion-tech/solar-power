@@ -13,26 +13,7 @@ export const metadata: Metadata = {
   description: env.APP_DESCRIPTION,
   keywords:
     "solar panels, solar inverters, solar batteries, solar equipment, renewable energy, India",
-  authors: [{ name: env.COMPANY_NAME }],
-  creator: env.COMPANY_NAME,
-  publisher: env.COMPANY_NAME,
-  robots: "index, follow",
-  openGraph: {
-    type: "website",
-    locale: "en_IN",
-    url: env.APP_URL,
-    title: env.APP_NAME,
-    description: env.APP_DESCRIPTION,
-    siteName: env.APP_NAME,
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: env.APP_NAME,
-    description: env.APP_DESCRIPTION,
-  },
-  verification: {
-    google: "your-google-verification-code",
-  },
+
 };
 
 export default function RootLayout({

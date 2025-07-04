@@ -80,7 +80,7 @@ const CartPage = () => {
   }
 
   return (
-    <div className="min-h-screen  py-8">
+    <div className="min-h-screen py-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="mb-8">
@@ -133,10 +133,10 @@ const CartPage = () => {
                   <div className="flex-1 min-w-0">
                     <div className="flex justify-between items-start mb-3">
                       <div>
-                        <p className="text-sm text-orange-600 font-semibold mb-1">
+                        <p className="text-xs md:text-sm text-orange-600 font-semibold mb-1">
                           {item.brand}
                         </p>
-                        <h3 className="text-lg font-semibold text-gray-900 leading-tight">
+                        <h3 className="text-sm sm:text-base md:text-lg font-semibold text-gray-900 leading-tight">
                           {item.name}
                         </h3>
                       </div>
@@ -160,13 +160,13 @@ const CartPage = () => {
 
                     {/* Key Specs */}
                     <div className="mb-4">
-                      <div className="grid grid-cols-2 gap-2">
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-0.5 md:gap-2">
                         {item.specs.slice(0, 4).map((spec, index) => (
                           <div
                             key={index}
                             className="flex items-center text-sm text-gray-600"
                           >
-                            <span className="w-2 h-2 bg-orange-500 rounded-full mr-2"></span>
+                            <span className="size-1.5 bg-orange-500 rounded-full mr-2"></span>
                             {spec}
                           </div>
                         ))}
@@ -174,52 +174,54 @@ const CartPage = () => {
                     </div>
 
                     {/* Price and Quantity */}
-                    <div className="flex items-center justify-between">
+                    <div className="flex items-start md:items-center justify-between flex-col gap-2 md:flex-row">
                       <div className="space-y-1">
-                        <div className="flex items-center space-x-3">
-                          <span className="text-2xl font-bold text-gray-900">
+                        <div className="flex flex-col md:flex-row items-start md:items-center md:space-x-3 ">
+                          <span className="text-base sm:text-lg md:text-xl xl:text-2xl font-bold text-gray-900">
                             ₹{item.price.toLocaleString("en-IN")}
                           </span>
-                          {item.originalPrice && (
-                            <span className="text-lg text-gray-500 line-through">
-                              ₹{item.originalPrice.toLocaleString("en-IN")}
-                            </span>
-                          )}
-                          {item.originalPrice && (
-                            <span className="bg-red-100 text-red-600 px-2 py-1 rounded text-sm font-semibold">
-                              Save ₹
-                              {(item.originalPrice - item.price).toLocaleString(
-                                "en-IN"
-                              )}
-                            </span>
-                          )}
+                          <div className="flex flex-col sm:flex-row gap-2">
+                            {item.originalPrice && (
+                              <span className="text-sm sm:text-base md:text-lg text-gray-500 line-through">
+                                ₹{item.originalPrice.toLocaleString("en-IN")}
+                              </span>
+                            )}
+                            {item.originalPrice && (
+                              <span className="bg-red-100 text-red-600 px-1 md:px-2 py-1 rounded text-xs md:text-sm font-medium md:font-semibold">
+                                Save ₹
+                                {(
+                                  item.originalPrice - item.price
+                                ).toLocaleString("en-IN")}
+                              </span>
+                            )}
+                          </div>
                         </div>
-                        <div className="text-sm text-gray-600">
+                        <div className="text-xs md:text-sm text-gray-600 ">
                           Item total: ₹
                           {(item.price * item.quantity).toLocaleString("en-IN")}
                         </div>
                       </div>
 
                       {/* Quantity Controls */}
-                      <div className="flex items-center space-x-3">
+                      <div className="flex items-center xl:space-x-3">
                         <button
                           onClick={() =>
                             updateQuantity(item.id, item.quantity - 1)
                           }
-                          className="w-10 h-10 rounded-lg border-2 border-gray-300 flex items-center justify-center hover:border-orange-500 hover:text-orange-500 transition-colors"
+                          className="size-6 md:size-8 xl:w-10 xl:h-10 rounded-lg border-2 border-gray-300 flex items-center justify-center hover:border-orange-500 hover:text-orange-500 transition-colors"
                         >
-                          <Minus size={16} />
+                          <Minus className="size-3 md:size-4" />
                         </button>
-                        <span className="w-12 text-center font-bold text-lg">
+                        <span className="w-8 md:w-12 text-center font-bold text-lg">
                           {item.quantity}
                         </span>
                         <button
                           onClick={() =>
                             updateQuantity(item.id, item.quantity + 1)
                           }
-                          className="w-10 h-10 rounded-lg border-2 border-gray-300 flex items-center justify-center hover:border-orange-500 hover:text-orange-500 transition-colors"
+                          className="size-6 md:size-8 xl:w-10 xl:h-10 rounded-lg border-2 border-gray-300 flex items-center justify-center hover:border-orange-500 hover:text-orange-500 transition-colors"
                         >
-                          <Plus size={16} />
+                          <Plus className="size-3 md:size-4" />
                         </button>
                       </div>
                     </div>
@@ -257,7 +259,7 @@ const CartPage = () => {
                     </button>
                   </div>
                 ) : (
-                  <div className="flex space-x-2">
+                  <div className="flex flex-col sm:flex-row gap-2">
                     <input
                       type="text"
                       value={promoCode}
